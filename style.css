@@ -1,0 +1,785 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
+
+:root{
+    --container : 100px;
+}
+main{position: relative;}
+main section{position: relative; z-index: 10;}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+hr{
+    margin: 50px 0;
+    border: 1px solid rgba(221, 221, 221, 0.719);
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+a:hover{
+    color: #ddd;
+    text-decoration: none;
+}
+.btn{
+    padding: 7px 30px;
+    cursor: pointer;
+    border: none;
+}
+.bintang{
+    background: url(img/bintang.png);
+    background-size: 70% contain;
+    opacity: .1;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(#2b1055,#7597de);
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px var(--container);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999999;
+}
+
+header .logo{
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li{
+    list-style: none;
+    margin-left: 20px;
+}
+
+header ul li a{
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+header ul li a:hover, 
+header ul li a.active{
+    background-color: #fff;
+    color: #2b1055;
+}
+
+/* HAMBURGER MENU */
+#togle-menu{
+    display: none;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    padding: 8px 5px;
+    position: relative;
+}
+
+#togle-menu span{
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transition: 0.5s;
+}
+
+#togle-menu input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+#togle-menu span:nth-child(2),
+#togle-menu span:last-child{
+    transform-origin: 0 0;
+}
+
+#togle-menu input:checked ~ span:nth-child(2){
+    transform: rotate(45deg) translate(-0.5px, -1px);
+}
+
+#togle-menu input:checked ~ span:nth-child(3){
+    opacity: 0;
+}
+
+#togle-menu input:checked ~ span:last-child{
+    transform: rotate(-45deg) translate(-1px, 0px);
+}
+
+/* SECTION PARALAX */
+section.paralax{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 130vh;
+    padding: var(--container);
+    overflow: hidden;
+}
+
+section.paralax::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #1c0522, transparent);
+    z-index: 1000;
+}
+
+section.paralax img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+section.paralax img#moon{
+    mix-blend-mode: screen;
+}
+
+section.paralax img#mountains_front{
+    z-index: 10 ;
+}
+
+#text{
+    position: absolute;
+    right: -500px;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 7vw;
+    z-index: 9;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#btn{
+    padding: 8px 30px;
+    border-radius: 40px;
+    background: #fff;
+    color: #2b1055;
+    font-size: 1.5em;
+    z-index: 9;
+    transform: translateY(100px);
+}
+
+/* MAIN CONTENT */
+main{
+    padding: var(--container);
+    background: #1c0522;
+}
+
+main h1{
+    font-size: 3.2em;
+    text-decoration: underline;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+section.top-up .cards,
+section.berita .cards{
+    display: grid; gap: 20px;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+section.top-up .cards .card,
+section.berita .cards .card{
+    display: grid;
+    position: relative;
+    background-color: #2b1055;
+    border: 5px solid #2b1055;
+    cursor: pointer;
+    transition: .3s;
+}
+
+section.top-up .cards .card img,
+section.berita .cards .card .img-berita img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+section button i,
+section .btn i{ animation: panah .3s infinite; }
+
+
+/* SECTION TOP UP */
+section.top-up{ position: relative; margin-bottom: 70px;}
+
+section.top-up .cards .card .card-body{
+    display: grid;
+    position: relative;
+    background-color: #2b1055;
+    width: 100%;
+    height: 200px;
+}
+
+section.top-up .cards .card .btn-topup{
+    position: absolute; bottom: 10%;
+    text-align: center;
+    padding: 7px 20px;
+    background-color: #2b1055;
+    color: #fff; border: none;
+    transition: 1s; cursor: pointer;
+    border-radius: 0 50px 50px 0;
+}
+
+section.top-up .cards .card h4{
+    text-align: center;
+    margin: 10px 0 5px 0;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+section.top-up .cards .card:hover{
+    border: 5px solid #fff;
+}
+section.top-up .cards .card:hover .btn-topup{
+    margin-left: 10px;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+/* SECTION BERITA */
+section.berita{ display: grid; }
+section.berita .cards .card{
+    background-color: #1c0522;
+    border: none;
+    outline: 2px solid rgb(199, 199, 199);
+    border-radius: 10px;
+    overflow-x: hidden;
+    min-height: 400px;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.6);
+}
+
+section.berita .cards .card .img-berita{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+}
+
+section.berita .cards .card .caption{
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient( rgb(42, 26, 49), rgba(0,0,0,.5));
+    color: #fff;
+    padding: 10px 20px;
+}
+
+section.berita .cards .card .caption h4{ font-size: 1em; }
+
+section.berita .cards .card .caption p,
+section.berita .cards .card .caption span{
+    font-size: .7em;
+    margin: 7px 0;
+    color: #ddd;
+}
+section.berita .cards .card .caption span{
+    bottom: 0;
+    right: 20px;
+    position: absolute;
+}
+
+section.berita .cards .card:hover h4{ color: #ddd; }
+section.berita .cards .card:hover { outline: 2px solid #1c0522; }
+
+section.berita .btn{
+    background-color: #fff;
+    color: #1c0522;
+    margin: 30px auto;
+    border-radius: 20px;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.7);
+    transition: .5s;
+}
+
+section.berita .btn:hover{ transform: translateY(5px); }
+
+/* FOOTER */
+footer{ 
+    background: linear-gradient(to top, #2b1055, #1c0522); 
+    padding-bottom: 30px;
+}
+footer .footer-info{
+    padding: 0 var(--container);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+footer a:hover{ color: #7597de; }
+footer p{
+    padding: 5px 0;
+    border-top: 1px solid #fff;
+    color: #fff;
+}
+footer .logo{
+    font-size: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+footer ul{
+    display: flex; gap: 25px;
+    text-transform: uppercase;
+    list-style: none;
+}
+footer ul li a::after{
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0%;
+    background-color: #fff;
+    transition: .7s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+footer ul li a:hover::after{ width: 100%; }
+footer ul li a:hover{ color: #fff; }
+footer .medsos{
+    display: flex;
+    gap: 20px;
+    font-size: 1.2em;
+}
+
+
+
+/* ============================= HALAMAN TOP UP ================================ */
+section.top-up-content{
+    display: grid; gap: 50px;
+    grid-template-columns: 1fr 1.5fr;
+    box-sizing: border-box;
+}
+section.top-up-content ul li{
+    margin-left: 20px;
+    font-size: .9em;
+}
+section.top-up-content p{
+    font-size: .9em;
+    margin: 20px 0;
+}
+section.top-up-content .left{ color: #fff; }
+section.top-up-content .left > img{ width: 100%; object-fit: cover;}
+section.top-up-content .right .form-card{
+    background-color: #2b1055;
+    color: #fff;
+    margin-bottom: 20px;
+    height: max-content;
+    padding: 0 20px 20px 20px;
+    border-radius: 8px;
+}
+section.top-up-content .right .form-card span{
+    display: inline-flex;
+    width: 35px; height: 35px;
+    color: #fff; margin: 0 5px 20px 0;
+    border-radius: 0 0 20px 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1c0522;
+}
+section.top-up-content .right .form-card h3{
+    display: inline;
+    align-items: center;
+}
+section.top-up-content .right .form-card #beli{
+    margin-top: 20px;
+    padding: 10px 50px;
+    font-size: .9em;
+    border-radius: 20px;
+    border: none; cursor: pointer;
+    box-shadow: 0 0 20px 1px #2a105569;
+    background-color: #fff;
+    transition: .3s;
+}
+section.top-up-content .right .form-card #beli:hover{ background-color: #462280; color: #fff;}
+section.top-up-content .right .form-card .form-el{
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: 5px;
+}
+section.top-up-content .right .form-card .form-el input{
+    display: grid;
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+    outline: 1px solid rgb(175, 175, 175);
+    text-align: center;
+}
+section.top-up-content .right .form-card .form-el .diamonds{
+    display: grid; gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+section.top-up-content .right .form-card .form-el .diamonds .diamond{
+    text-align: center;
+    border-radius: 10px;
+    background-color: #eee;
+    outline: 1px solid #1a0838;
+    padding: 20px 10px 0 10px;
+    position: relative;
+}
+section.top-up-content .right .form-card .form-el .diamonds .diamond img{ width: 50px; }
+section.top-up-content .right .form-card .form-el .diamonds .diamond p{ color: #000; }
+section.top-up-content .right .form-card .form-el input[type = radio]{ 
+    width: 100%; height: 100%; 
+    position: absolute; 
+    top: 0; left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+section.top-up-content .right .form-card .form-el .diamonds .diamond > div{ border-radius: 10px; }
+section.top-up-content .right .form-card .form-el input[type = radio]:checked ~ div{
+    position: absolute; 
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    outline: 2px solid #582fac !important;
+    background-color: #2a10553a;
+}
+
+section.top-up-content .right .form-card .form-el .payments{
+    display: grid; gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+section.top-up-content .right .form-card .form-el .payments .payment{
+    outline: 1px solid #ddd;
+    color: #000;
+    background: #eee;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    padding: 20px 10px;
+    position: relative;
+}
+section.top-up-content .right .form-card .form-el .payments .payment h4{
+    margin-top: 10px;
+    color: rgb(99, 99, 99);
+}
+section.top-up-content .right .form-card .form-el .payments .payment > div{ border-radius: 5px; }
+
+section.top-up-content .right .form-card p{
+    font-size: .7em;
+    font-style: italic;
+    color: #ddd;
+}
+
+
+/* =============================== HALAMAN BERITA ============================= */
+section.page-berita{
+    display: grid; gap: 70px;
+    grid-template-columns: 2fr 1fr;
+}
+section.page-berita .berita-terkini{
+    display: grid; gap: 15px;
+    color: #fff;
+    height: max-content;
+}
+section.page-berita .berita-terkini .card-berita{
+    display: grid; gap: 30px;
+    border-bottom: 1px solid #7596de65;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    grid-template-columns: 1fr 2fr;
+}
+.tentang{ font-size: .75em; margin-top: 10px; }
+section.page-berita .berita-terkini .card-berita p{ font-size: .85em; margin-top: 10px;}
+section.page-berita .berita-terkini .card-berita .tentang > span{ background-color: rgb(53, 145, 73); padding: 2px 4px;}
+section.page-berita .berita-terkini .card-berita img, p, h3{ transition: .5s; }
+section.page-berita .berita-terkini .card-berita:hover img{ filter: brightness(.7); }
+section.page-berita .berita-terkini .card-berita:hover h3,
+section.page-berita .berita-terkini .card-berita:hover p { color: rgb(187, 187, 187); }
+section.page-berita .berita-terkini .card-berita img{ width: 100%; object-fit: cover; }
+section.page-berita aside{ 
+    display: grid; gap: 20px;
+    height: max-content;
+    grid-template-areas: 'top''bottom';
+}
+section.page-berita aside .top{ 
+    display: grid; 
+    grid-area: top;
+    gap: 20px; 
+    height: max-content;
+}
+section.page-berita aside .top .jadwal-event,
+section.page-berita aside .bottom .rekomendasi-berita{
+    background-color: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+section.page-berita aside .head-card{
+    padding: 10px 20px;
+    background-color: #2b1055;
+    color: #fff;
+}
+section.page-berita aside .body-card{ padding: 10px 20px; }
+section.page-berita aside .body-card ul li{ margin: 0 0 10px 20px; }
+section.page-berita aside .body-card a{ text-align: center; color: #462280;}
+section.page-berita aside .body-card a:hover{ color: #1c0522; text-decoration: underline;}
+section.page-berita aside .body-card iframe{ width: 100%; height: max-content; }
+
+
+/* ============================= HALAMAN ISI BERITA ================================ */
+header.nav-fill-color{
+    background-color: #2b1055;
+    padding: 7px var(--container);
+    position: fixed;
+}
+
+section.page-berita aside .bottom{ grid-area: bottom; }
+section.page-berita aside .bottom .rekomendasi-berita a{
+    text-decoration: none;
+}
+section.page-berita aside .bottom .rekomendasi-berita .body-card{
+    display: grid;
+    gap: 20px;
+}
+section.page-berita aside .bottom .rekomendasi-berita .body-card .card{
+    display: grid;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+section.page-berita aside .bottom .rekomendasi-berita .body-card .card .caption{
+    text-align: left;
+    display: grid;
+    gap: 10px;
+}
+section.page-berita aside .bottom .rekomendasi-berita .body-card .card h4{
+    font-size: 1.2em;
+}
+section.page-berita aside .bottom .rekomendasi-berita .body-card .card p, span{
+    font-size: .8em;
+}
+section.page-berita aside .bottom .rekomendasi-berita .body-card .card img{
+    width: 100%;
+    object-fit: cover;
+}
+
+section.page-berita .content{ color: #fff; }
+section.page-berita .content h2{ font-size: 1.8em; }
+section.page-berita .content > span:nth-child(2){
+    background-color: rgb(53, 145, 73); 
+    padding: 2px 4px;
+}
+section.page-berita .content .isi-berita img{
+    width: 100%;
+}
+section.page-berita .content .isi-berita{
+    margin-top: 20px;
+    background-color: #1a0838;
+}
+section.page-berita .content .isi-berita .container-teks{
+    padding: 10px 20px;
+}
+section.page-berita .content .isi-berita .container-teks p{
+    font-size: .9em;
+    margin: 20px 0;
+    line-height: 30px;
+}
+section.page-berita .content .komentar{
+    margin-top: 30px;
+}
+section.page-berita .content .komentar .form {
+    display: grid; gap: 15px;
+    background-color: #1a0838;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+section.page-berita .content .komentar .form .form-el{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+section.page-berita .content .komentar .form .form-el input, textarea{
+    width: 100%;
+    padding: 3px 10px;
+    resize: none;
+}
+section.page-berita .content .komentar .form .btn{
+    background-color: #2b1055;
+    outline: 1px solid #fff;
+    padding: 10px 50px;
+    width: max-content;
+    color: #fff;
+    border-radius: 10px;
+    transition: .5s;
+}
+section.page-berita .content .komentar .form .btn:hover{
+    background-color: #fff;
+    outline: 1px solid #fff;
+    color: #2b1055;
+}
+
+
+/* ============================= HALAMAN ABOUT ================================ */
+section.about{
+    display: grid; gap: 80px;
+    margin: 0 50px;
+    grid-template-columns: 1fr 2fr;
+}
+section.about .left{
+    width: 100%;
+    display: grid;
+    position: relative;
+}
+section.about .left .img{
+    width: 80%;
+    position: relative;
+    margin: auto;
+    z-index: 9;
+}
+section.about .left > img{
+    position: absolute;
+    top: 0;
+    animation: blob-about 4s linear infinite;
+}
+section.about .left img{
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+section.about .right{
+    display: grid;
+    align-self: center;
+    height: max-content;
+    color: #fff;
+    width: 90%;
+}
+section.about .right h2{ font-size: 3em; text-transform: capitalize;}
+section.about .right h2 span{ color: rgb(228, 228, 5);}
+section.about .right p{ font-size: 1.15em; margin-bottom: 20px;}
+section.about .right a{ font-size: 1.5em; margin-right: 15px;}
+section.about .right .btn{
+    background-color: #7597de;
+    padding: 10px 30px;
+    color: #000;
+    height: max-content;
+    margin-top: 20px;
+    font-size: .8em;
+    border-radius: 40px;
+    box-shadow: 5px 6px 10px rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+section.about .right .btn:hover{
+    background-color: #2b1055;
+    color: #fff;
+}
+
+/* ******* LARGE DEVICE ******* */
+@media screen and (max-width: 1024px) {
+    /* ============================= HALAMAN TOP UP ================================ */
+    section.top-up-content{
+        grid-template-columns: 100%;
+    }
+    
+    /* ============================= HALAMAN BERITA ================================ */
+    section.page-berita{
+        grid-template-columns: 1fr;
+    }
+    section.page-berita aside .top{
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    section.page-berita aside{ grid-template-areas: 'bottom''top'; }
+    section.page-berita aside .bottom .rekomendasi-berita .body-card{
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* ******* TABLET ******* */
+@media screen and (max-width: 850px) {
+    section.about{ grid-template-columns: 1fr; margin: 0; }
+    section.berita .cards{ grid-template-columns: 1fr; }
+    footer .footer-info{ display: grid; gap: 20px; }
+    footer ul{ flex-direction: column; }
+}
+
+/* ******* SMARTPHONE ******* */
+@media screen and (max-width: 657px) {
+    :root{
+        --container : 30px;
+    }
+
+    #togle-menu{ display: grid;}
+    #btn{ padding: 5px 20px; font-size: 1.2em; }
+    #text{ font-size: 10vw; }
+
+    header ul{
+        transform: scale(0); opacity: 0;
+        transform-origin: 100% 0;
+        transition: 0.5s;
+        position: absolute;
+        right: 30px; top: 70px;
+        flex-direction: column;
+        height: max-content;
+        padding: 20px; gap: 20px;
+        width: max-content;
+        background-color: #fff;
+        border-radius: 8px;
+    }
+
+    header ul.show{
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    header ul li{ margin: 0; }
+    header ul li a{ color: #1c0522; }
+    header ul li a:hover{
+        background-color: #2b1055;
+        color: #fff;
+    }
+
+    main h1{ font-size: 2em; }
+
+    /* ============================= HALAMAN BERITA ================================ */
+    section.page-berita .berita-terkini .card-berita{ grid-template-columns: 1fr; }
+    
+    /* ============================= HALAMAN ISI BERITA ================================ */
+    section.page-berita .content .komentar .form .form-el{ grid-template-columns: 1fr; }
+}
+
+
+/* ANIMATION */
+@keyframes panah {
+    from{
+        margin-left: 0px;
+    }
+    to{
+        margin-left: 5px;
+    }
+}
+
+@keyframes blob-about {
+    50%{
+        transform: translate(-15px, -15px);
+    }
+}
